@@ -6,7 +6,12 @@ public class Modèle {
 	
 	int N_TENTATIVES = 10;
 	int DIFFICULTE = 4;
-	//enum Etat = {EN_COURS, GAGNE, PERDU};
+	enum Etat {EN_COURS, GAGNE, PERDU};
+	
+	Etat état;
+	Rangée combinaison;
+	Rangée[] propositions;
+	int tentative;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
