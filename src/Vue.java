@@ -19,19 +19,14 @@ public class Vue extends Frame implements WindowListener,Observer{
 	Frame Jeu = new Frame();
 
 	
-	public Vue (Modèle mdl){
+	public Vue (Modèle mdl, Contrôleur ctrl){
 		this.mdl=mdl;
-			
-		
 		
 		this.setLayout(new BorderLayout());
-		VueClavier VC =new VueClavier(mdl);
+		VueClavier VC = new VueClavier(mdl, ctrl);
 		VueProposition VP=new VueProposition(mdl);
 		this.add(VC,BorderLayout.SOUTH);
 		this.add(VP,BorderLayout.NORTH);
-
-
-	
 		
 		this.setSize(500, 500);
 		this.setTitle("Mastermind");
@@ -39,7 +34,6 @@ public class Vue extends Frame implements WindowListener,Observer{
 		this.setVisible(true);
 		this.addWindowListener(this);
 		
-		mdl.addObserver(this);
 	}
 
 	public void paint(Graphics g) {
