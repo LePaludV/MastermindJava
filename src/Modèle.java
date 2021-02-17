@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.util.Random;
 
 public class Modèle {
 	
@@ -13,9 +14,14 @@ public class Modèle {
 	Rangée[] propositions;
 	int tentative;
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public Modèle() {
+		this.combinaison = new Rangée(this);
+		this.propositions = new Rangée[this.N_TENTATIVES];
+		
+		for (int i=0;i<this.DIFFICULTE;i++) {
+			Random r = new Random();
+			this.combinaison.jetons[i] = this.COULEURS[r.nextInt(this.COULEURS.length)];
+		}
 	}
 
 }
