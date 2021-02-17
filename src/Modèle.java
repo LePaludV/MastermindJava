@@ -17,11 +17,33 @@ public class Modèle {
 	public Modèle() {
 		this.combinaison = new Rangée(this);
 		this.propositions = new Rangée[this.N_TENTATIVES];
+		Random r = new Random();
 		
 		for (int i=0;i<this.DIFFICULTE;i++) {
-			Random r = new Random();
 			this.combinaison.jetons[i] = this.COULEURS[r.nextInt(this.COULEURS.length)];
+			System.out.println(this.combinaison.jetons[i]);
 		}
 	}
-
+	
+	public void archiverProp(Rangée r) {
+		this.propositions[tentative] = r;
+	}
+	
+	public boolean évaluerProp() {
+		Rangée rangéeCourante = this.propositions[tentative];
+		
+		for (int i=0;i<rangéeCourante.jetons.length;i++) {
+			if (rangéeCourante.jetons[i].equals(this.combinaison.jetons[i])) {
+				rangéeCourante.résultat[1]++;
+			} else {
+				for (int j=0;j<this.combinaison.jetons.length;j++) {
+					if (rangéeCourante.jetons[j].equals(this.combinaison.jetons[i])) {
+						rangéeCourante.résultat[0]++;
+					}
+				}
+			}
+		}
+		
+		return rangéeCourante.résultat[1]==this.DIFFICULTE;
+	}
 }
