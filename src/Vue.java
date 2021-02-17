@@ -10,13 +10,14 @@ import java.awt.Panel;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Vue extends Frame implements WindowListener{
+public class Vue extends Frame implements WindowListener,Observer{
 	Modèle mdl;
 	
 	Frame Jeu = new Frame();
-	Panel VueClavier =new Panel();
-	Canvas VueProposition= new Canvas();
+
 	
 	public Vue (Modèle mdl){
 		this.mdl=mdl;
@@ -24,27 +25,22 @@ public class Vue extends Frame implements WindowListener{
 		
 		
 		this.setLayout(new BorderLayout());
-		this.add(VueClavier,BorderLayout.SOUTH);
-		this.add(VueProposition,BorderLayout.NORTH);
+		VueClavier VC =new VueClavier(mdl);
+		VueProposition VP=new VueProposition(mdl);
+		this.add(VC,BorderLayout.SOUTH);
+		this.add(VP,BorderLayout.NORTH);
 
-		Color[] Couleur=this.mdl.COULEURS;
-		
-		for(int i=0;i<Couleur.length;i++) {
-			Button b = new Button();
-			b.setBackground(Couleur[i]);
-			this.VueClavier.add(b);
-		}
-		
-		this.VueProposition.setPreferredSize(new Dimension(400,600));
-		
+
+	
 		
 		this.setSize(500, 500);
 		this.setTitle("Mastermind");
 		this.pack();
 		this.setVisible(true);
 		this.addWindowListener(this);
-
-		}
+		
+		mdl.addObserver(this);
+	}
 
 	public void paint(Graphics g) {
 		Graphics2D g2;
@@ -101,6 +97,12 @@ public class Vue extends Frame implements WindowListener{
 
 	@Override
 	public void windowOpened(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 		
 	}
