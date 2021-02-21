@@ -2,10 +2,10 @@ import java.awt.Canvas;
 import java.awt.Dimension;
 
 public class VueProposition extends Canvas{
-	ModÃ¨le mdl;
+	Modèle mdl;
 
 	
-	public VueProposition(ModÃ¨le mdl){
+	public VueProposition(Modèle mdl){
 		this.mdl=mdl;
 		this.setPreferredSize(new Dimension(400,600));
 		

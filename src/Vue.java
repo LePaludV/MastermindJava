@@ -14,12 +14,12 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class Vue extends Frame implements WindowListener,Observer{
-	ModÃ¨le mdl;
+	Modèle mdl;
 	
 	Frame Jeu = new Frame();
 
 	
-	public Vue (ModÃ¨le mdl, ContrÃ´leur ctrl){
+	public Vue (Modèle mdl, Contrôleur ctrl){
 		this.mdl=mdl;
 		
 		this.setLayout(new BorderLayout());

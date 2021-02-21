@@ -2,8 +2,8 @@
 public class Main {
 
 	public static void main(String[] args) {
-		ModÃ¨le modl = new ModÃ¨le();
-		ContrÃ´leur ctrl = new ContrÃ´leur(modl);
+		Modèle modl = new Modèle();
+		Contrôleur ctrl = new Contrôleur(modl);
 		new Vue(modl, ctrl);
 		
 

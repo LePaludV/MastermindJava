@@ -1,17 +1,17 @@
 import java.awt.Color;
 
-public class RangÃ©e {
+public class Rangée {
 	
-	ModÃ¨le mdl;
+	Modèle mdl;
 	Color[] jetons;
 	int indiceJeton;
-	int[] rÃ©sultat;
+	int[] résultat;
 	
-	public RangÃ©e(ModÃ¨le mdl) {
+	public Rangée(Modèle mdl) {
 		this.mdl = mdl;
-		this.indiceJeton = mdl.DIFFICULTE;
+		this.indiceJeton = 0;
 		this.jetons = new Color[mdl.DIFFICULTE];
-		this.rÃ©sultat = new int[2];
+		this.résultat = new int[2];
 	}
 
 }

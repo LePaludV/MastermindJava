@@ -1,7 +1,7 @@
 import java.awt.Color;
 import java.util.Random;
 
-public class Mod√®le {
+public class ModËle {
 	
 	Color[] COULEURS = {Color.YELLOW, Color.GREEN, Color.BLUE, Color.MAGENTA, Color.RED, Color.ORANGE, Color.BLACK, Color.WHITE};
 	
@@ -9,14 +9,15 @@ public class Mod√®le {
 	int DIFFICULTE = 4;
 	enum Etat {EN_COURS, GAGNE, PERDU};
 	
-	Etat √©tat;
-	Rang√©e combinaison;
-	Rang√©e[] propositions;
+	Etat Ètat;
+	RangÈe combinaison;
+	RangÈe[] propositions;
 	int tentative;
 	
-	public Mod√®le() {
-		this.combinaison = new Rang√©e(this);
-		this.propositions = new Rang√©e[this.N_TENTATIVES];
+	public ModËle() {
+		this.combinaison = new RangÈe(this);
+		this.propositions = new RangÈe[this.N_TENTATIVES];
+		this.tentative = 0;
 		Random r = new Random();
 		
 		for (int i=0;i<this.DIFFICULTE;i++) {
@@ -25,25 +26,26 @@ public class Mod√®le {
 		}
 	}
 	
-	public void archiverProp(Rang√©e r) {
+	public void archiverProp(RangÈe r) {
 		this.propositions[tentative] = r;
 	}
 	
-	public boolean √©valuerProp() {
-		Rang√©e rang√©eCourante = this.propositions[tentative];
+	public boolean ÈvaluerProp() {
+		RangÈe rangÈeCourante = this.propositions[this.tentative];
 		
-		for (int i=0;i<rang√©eCourante.jetons.length;i++) {
-			if (rang√©eCourante.jetons[i].equals(this.combinaison.jetons[i])) {
-				rang√©eCourante.r√©sultat[1]++;
+		for (int i=0;i<rangÈeCourante.jetons.length;i++) {
+			if (rangÈeCourante.jetons[i].equals(this.combinaison.jetons[i])) {
+				rangÈeCourante.rÈsultat[1]++;
 			} else {
 				for (int j=0;j<this.combinaison.jetons.length;j++) {
-					if (rang√©eCourante.jetons[j].equals(this.combinaison.jetons[i])) {
-						rang√©eCourante.r√©sultat[0]++;
+					if (rangÈeCourante.jetons[j].equals(this.combinaison.jetons[i])) {
+						rangÈeCourante.rÈsultat[0]++;
 					}
 				}
 			}
 		}
 		
-		return rang√©eCourante.r√©sultat[1]==this.DIFFICULTE;
+		this.tentative++;
+		return rangÈeCourante.rÈsultat[1]==this.DIFFICULTE;
 	}
 }

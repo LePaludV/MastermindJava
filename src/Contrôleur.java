@@ -5,21 +5,33 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-public class ContrÃ´leur implements ActionListener {
+public class Contrôleur implements ActionListener {
 	
-	ModÃ¨le mdl;
+	Modèle mdl;
+	Rangée current_proposition;
 	
-	public ContrÃ´leur(ModÃ¨le mdl) {
+	public Contrôleur(Modèle mdl) {
 		this.mdl = mdl;
+		this.current_proposition = new Rangée(this.mdl);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() instanceof Button) {
-			int indice =  (int) e.toString().charAt(-1);
-			RangÃ©e[] prop = this.mdl.propositions;
-			//mdl.COULEURS[indice];
+			Button btn = (Button) e.getSource();
+			int ind = this.current_proposition.indiceJeton;
+			this.current_proposition.jetons[ind] = btn.getBackground();
+			this.current_proposition.indiceJeton++;
+			System.out.println("------------------");
+			System.out.println(btn.getBackground());
+
+			if (this.current_proposition.indiceJeton == this.mdl.DIFFICULTE) {
+				this.mdl.archiverProp(this.current_proposition);
+				this.current_proposition = new Rangée(this.mdl);
+				System.out.println(this.mdl.évaluerProp());
+			}
 		}
 		
 	}
+	
 }
