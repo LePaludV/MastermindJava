@@ -4,8 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.Observable;
 
-public class Contrôleur implements ActionListener {
+public class Contrôleur extends Observable implements ActionListener  {
 	
 	Modèle mdl;
 	Rangée current_proposition;
@@ -24,8 +25,11 @@ public class Contrôleur implements ActionListener {
 			this.current_proposition.indiceJeton++;
 			System.out.println("------------------");
 			System.out.println(btn.getBackground());
+			
 
 			if (this.current_proposition.indiceJeton == this.mdl.DIFFICULTE) {
+				this.setChanged();
+				this.notifyObservers(this.current_proposition);
 				this.mdl.archiverProp(this.current_proposition);
 				this.current_proposition = new Rangée(this.mdl);
 				System.out.println(this.mdl.évaluerProp());

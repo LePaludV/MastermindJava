@@ -18,13 +18,13 @@ public class Vue extends Frame implements WindowListener,Observer{
 	
 	Frame Jeu = new Frame();
 
-	
+	VueProposition VP=new VueProposition(mdl);
 	public Vue (Modèle mdl, Contrôleur ctrl){
 		this.mdl=mdl;
 		
 		this.setLayout(new BorderLayout());
 		VueClavier VC = new VueClavier(mdl, ctrl);
-		VueProposition VP=new VueProposition(mdl);
+		
 		this.add(VC,BorderLayout.SOUTH);
 		this.add(VP,BorderLayout.NORTH);
 		
@@ -33,6 +33,8 @@ public class Vue extends Frame implements WindowListener,Observer{
 		this.pack();
 		this.setVisible(true);
 		this.addWindowListener(this);
+		
+		ctrl.addObserver(this);
 		
 	}
 
@@ -97,8 +99,12 @@ public class Vue extends Frame implements WindowListener,Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
+		System.out.println("yess");
 		
-	}
+		if(arg instanceof Rangée) {
+			
+			VP.NouvelProposition((Rangée)arg);
+		}
 
+}
 }

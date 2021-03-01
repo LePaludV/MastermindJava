@@ -1,7 +1,8 @@
 import java.awt.Color;
+import java.util.Observable;
 import java.util.Random;
 
-public class Modèle {
+public class Modèle extends Observable {
 	
 	Color[] COULEURS = {Color.YELLOW, Color.GREEN, Color.BLUE, Color.MAGENTA, Color.RED, Color.ORANGE, Color.BLACK, Color.WHITE};
 	
