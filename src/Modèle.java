@@ -2,7 +2,7 @@ import java.awt.Color;
 import java.util.Observable;
 import java.util.Random;
 
-public class Modèle extends Observable {
+public class ModÃ¨le extends Observable {
 	
 	Color[] COULEURS = {Color.YELLOW, Color.GREEN, Color.BLUE, Color.MAGENTA, Color.RED, Color.ORANGE, Color.BLACK, Color.WHITE};
 	
@@ -10,14 +10,14 @@ public class Modèle extends Observable {
 	int DIFFICULTE = 4;
 	enum Etat {EN_COURS, GAGNE, PERDU};
 	
-	Etat état;
-	Rangée combinaison;
-	Rangée[] propositions;
+	Etat Ã©tat;
+	RangÃ©e combinaison;
+	RangÃ©e[] propositions;
 	int tentative;
 	
-	public Modèle() {
-		this.combinaison = new Rangée(this);
-		this.propositions = new Rangée[this.N_TENTATIVES];
+	public ModÃ¨le() {
+		this.combinaison = new RangÃ©e(this);
+		this.propositions = new RangÃ©e[this.N_TENTATIVES];
 		this.tentative = 0;
 		Random r = new Random();
 		
@@ -27,28 +27,29 @@ public class Modèle extends Observable {
 		}
 	}
 	
-	public void archiverProp(Rangée r) {
-		this.propositions[tentative] = r;
-		this.setChanged();
-		this.notifyObservers(r);
+	public void archiverProp(RangÃ©e r) {
+		this.propositions[this.tentative] = r;
 	}
 	
-	public void évaluerProp() {
-		Rangée rangéeCourante = this.propositions[this.tentative];
+	public void Ã©valuerProp() {
+		RangÃ©e rangÃ©eCourante = this.propositions[this.tentative];
+		System.out.println(rangÃ©eCourante);
 		
-		for (int i=0;i<rangéeCourante.jetons.length;i++) {
-			if (rangéeCourante.jetons[i].equals(this.combinaison.jetons[i])) {
-				rangéeCourante.résultat[1]++;
+		for (int i=0;i<rangÃ©eCourante.jetons.length;i++) {
+			if (rangÃ©eCourante.jetons[i].equals(this.combinaison.jetons[i])) {
+				rangÃ©eCourante.rÃ©sultat[1]++;
 			} else {
 				for (int j=0;j<this.combinaison.jetons.length;j++) {
-					if (rangéeCourante.jetons[j].equals(this.combinaison.jetons[i])) {
-						rangéeCourante.résultat[0]++;
+					if (rangÃ©eCourante.jetons[j].equals(this.combinaison.jetons[i])) {
+						rangÃ©eCourante.rÃ©sultat[0]++;
 					}
 				}
 			}
 		}
-		System.out.println(rangéeCourante.résultat);
+		System.out.println(rangÃ©eCourante.rÃ©sultat);
 		this.tentative++;
-		System.out.println(rangéeCourante.jetons);
+		System.out.println(rangÃ©eCourante.jetons);
+		this.setChanged();
+		this.notifyObservers(rangÃ©eCourante);
 	}
 }

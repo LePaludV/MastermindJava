@@ -14,12 +14,12 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class Vue extends Frame implements WindowListener,Observer{
-	Modèle mdl;
+	ModÃ¨le mdl;
 	
 	Frame Jeu = new Frame();
 
 	VueProposition VP=new VueProposition(mdl);
-	public Vue (Modèle mdl, Contrôleur ctrl){
+	public Vue (ModÃ¨le mdl, ContrÃ´leur ctrl){
 		this.mdl=mdl;
 		
 		this.setLayout(new BorderLayout());
@@ -101,8 +101,8 @@ public class Vue extends Frame implements WindowListener,Observer{
 	public void update(Observable o, Object arg) {
 		System.out.println("yess");
 		
-		if(arg instanceof Rangée) {
-			VP.NouvelProposition((Rangée)arg);
+		if(arg instanceof RangÃ©e) {
+			VP.NouvelProposition((RangÃ©e)arg);
 		}
 
 }

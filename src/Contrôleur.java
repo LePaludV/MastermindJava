@@ -6,14 +6,14 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.Observable;
 
-public class Contrôleur implements ActionListener  {
+public class ContrÃ´leur implements ActionListener  {
 	
-	Modèle mdl;
-	Rangée current_proposition;
+	ModÃ¨le mdl;
+	RangÃ©e current_proposition;
 	
-	public Contrôleur(Modèle mdl) {
+	public ContrÃ´leur(ModÃ¨le mdl) {
 		this.mdl = mdl;
-		this.current_proposition = new Rangée(this.mdl);
+		this.current_proposition = new RangÃ©e(this.mdl);
 	}
 
 	@Override
@@ -29,7 +29,8 @@ public class Contrôleur implements ActionListener  {
 
 			if (this.current_proposition.indiceJeton == this.mdl.DIFFICULTE) {
 				this.mdl.archiverProp(this.current_proposition);
-				this.current_proposition = new Rangée(this.mdl);
+				this.mdl.Ã©valuerProp();
+				this.current_proposition = new RangÃ©e(this.mdl);
 			}
 		}
 		

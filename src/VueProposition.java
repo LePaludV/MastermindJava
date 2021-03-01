@@ -6,30 +6,30 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class VueProposition extends Canvas {
-	Modèle mdl;
+	ModÃ¨le mdl;
 	Color couleur=Color.black;
 	int x=10;
 	int y=10;
 
 
-	public VueProposition(Modèle mdl){
+	public VueProposition(ModÃ¨le mdl){
 		this.mdl=mdl;
 
 		this.setPreferredSize(new Dimension(400,600));
 
 
 	}
-	public void NouvelProposition(Rangée r){
+	public void NouvelProposition(RangÃ©e r){
 		for(Color c :r.jetons) {
 			paint(getGraphics() , c, x, y,false);
 			this.x+=300/r.jetons.length;
 		}
 		this.y+=60;
 		this.x=10;
-		int noir=r.résultat[1];
-		int blanc=r.résultat[0];
-		System.out.println(noir);
-		System.out.println(blanc);
+		int noir=r.rÃ©sultat[1];
+		int blanc=r.rÃ©sultat[0];
+		System.out.println("noir : "+noir);
+		System.out.println("blanc : "+blanc);
 		if(noir!=0) {
 			System.out.println("noir1");
 			paint(getGraphics() , Color.black,325, y,true);
@@ -75,8 +75,8 @@ public class VueProposition extends Canvas {
 	}
 
 
-	public void paint(Graphics g,Color c,int x,int y,boolean résultat) {
-		if(résultat) {
+	public void paint(Graphics g,Color c,int x,int y,boolean rÃ©sultat) {
+		if(rÃ©sultat) {
 			if(c==Color.WHITE) {
 				g.setColor(Color.black);
 				g.drawOval(this.x, y, 5, 5);

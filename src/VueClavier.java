@@ -5,9 +5,9 @@ import java.awt.event.ActionListener;
 
 public class VueClavier extends Panel {
 
-	Modèle mdl;
+	ModÃ¨le mdl;
 	
-	public VueClavier(Modèle mdl, ActionListener l) {
+	public VueClavier(ModÃ¨le mdl, ActionListener l) {
 		this.mdl=mdl;
 		
 		Color[] Couleur=this.mdl.COULEURS;
