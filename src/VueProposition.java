@@ -26,33 +26,60 @@ public class VueProposition extends Canvas {
 		
 		int noir=r.résultat[1];
 		int blanc=r.résultat[0];
-		if(noir!=0) {
-			paint(getGraphics() , Color.black,325, y,true);
-			noir-=1;}
-		else if(blanc!=0) {
-			paint(getGraphics() , Color.WHITE,325, y,true);
-			blanc-=1;}
-
-		if(noir!=0) {
-			paint(getGraphics() , Color.black,350, y,true);
-			noir-=1;}
-		else if(blanc!=0) {
-			paint(getGraphics() , Color.WHITE,350, y,true);
-			blanc-=1;}
-
-		if(noir!=0) {
-			paint(getGraphics() , Color.black,325, y+25,true);
-			noir-=1;}
-		else if(blanc!=0) {
-			paint(getGraphics() , Color.WHITE,325, y+25,true);
-			blanc-=1;}
-
-		if(noir!=0) {
-			paint(getGraphics() , Color.black,350, y+25,true);
-			noir-=1;}
-		else if(blanc!=0) {
-			paint(getGraphics() , Color.WHITE,350, y+25,true);
-			blanc-=1;}
+		int xR=325;
+		int yR=this.y;
+		
+		for (int i=0;i<noir;i++) {
+			System.out.println(xR);
+			System.out.println(yR);
+			System.out.println("NOIR");
+			paint(getGraphics() , Color.black,xR, yR,true);
+			
+			
+			if(xR==325 && yR==this.y ) {
+				xR+=25;
+			}
+			else if(xR==350 && yR==this.y) {
+				xR=325;
+				yR=this.y+25;
+			}
+			else if (yR==this.y+25 && xR==325) {
+				yR=this.y+25;
+				xR=350;
+			}
+			else if (yR==this.y+25&& xR==350){
+				xR=325;
+				yR=this.y;
+			}
+			
+			
+		
+			
+			
+			
+		}
+		
+		for (int i=0;i<blanc;i++) {
+			paint(getGraphics() , Color.WHITE,xR, yR,true);
+			System.out.println(xR);
+			System.out.println(yR);
+			if(xR==325 && yR==this.y ) {
+				xR+=25;
+			}
+			else if(xR==350 && yR==this.y) {
+				xR=325;
+				yR=this.y+25;
+			}
+			else if (yR==this.y+25 && xR==325) {
+				yR=this.y+25;
+				xR=350;
+			}
+			else if (yR==this.y+25&& xR==350){
+				xR=325;
+				yR=this.y;
+			}
+			
+		}
 
 
 		this.y+=60;

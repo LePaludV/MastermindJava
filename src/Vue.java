@@ -16,14 +16,14 @@ import java.util.Observer;
 public class Vue extends Frame implements WindowListener,Observer{
 	Modèle mdl;
 	Frame Jeu = new Frame();
-
+	Contrôleur ctrl;
 	VueProposition VP=new VueProposition(mdl);
-	
+	VueClavier VC;
 	public Vue (Modèle mdl, Contrôleur ctrl){
 		this.mdl=mdl;
-		
+		this.ctrl=ctrl;
 		this.setLayout(new BorderLayout());
-		VueClavier VC = new VueClavier(mdl, ctrl);
+		VC = new VueClavier(mdl, this.ctrl);
 		
 		this.add(VC,BorderLayout.SOUTH);
 		this.add(VP,BorderLayout.NORTH);
@@ -99,19 +99,20 @@ public class Vue extends Frame implements WindowListener,Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
+		
 		if(arg instanceof Rangée) {
 			Rangée prop=(Rangée) arg;
 			if(prop.résultat[1]==4) {
 				System.out.println("Gagné !");
-				//VC.partieGagné();
+				this.VC.partieGagné(this.ctrl);
 			}
-			if(mdl.tentative==mdl.N_TENTATIVES && prop.résultat[1]!=4) {
+			if(mdl.tentative==mdl.N_TENTATIVES) {
 				System.out.println(prop.indiceJeton);
 				System.out.println(mdl.DIFFICULTE);
 				System.out.println("Perdu");
-				//VC.partiePerdue();
+				this.VC.partiePerdue(this.ctrl);
 			}
-			VP.NouvelProposition((Rangée)arg);
+			this.VP.NouvelProposition((Rangée)arg);
 		}
 
 }

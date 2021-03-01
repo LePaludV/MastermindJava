@@ -52,4 +52,7 @@ public class Modèle extends Observable {
 		this.setChanged();
 		this.notifyObservers(rangéeCourante);
 	}
+	
+	
+	
 }
