@@ -10,19 +10,19 @@ public class VueProposition extends Canvas {
 	Color couleur=Color.black;
 	int x=10;
 	int y=10;
-	
-	
+
+
 	public VueProposition(Modèle mdl){
 		this.mdl=mdl;
-		
+
 		this.setPreferredSize(new Dimension(400,600));
 
-		
+
 	}
 	public void NouvelProposition(Rangée r){
 		for(Color c :r.jetons) {
-				paint(getGraphics() , c, x, y,false);
-				this.x+=300/r.jetons.length;
+			paint(getGraphics() , c, x, y,false);
+			this.x+=300/r.jetons.length;
 		}
 		this.y+=60;
 		this.x=10;
@@ -40,7 +40,7 @@ public class VueProposition extends Canvas {
 		else {
 			System.out.println("rien");
 		}
-		
+
 		if(noir!=0) {
 			System.out.println("noir2");
 			paint(getGraphics() , Color.black,350, y,true);
@@ -71,21 +71,21 @@ public class VueProposition extends Canvas {
 		else {
 			System.out.println("rien");
 		}
-	
+
 	}
-	
-	
-		public void paint(Graphics g,Color c,int x,int y,boolean résultat) {
-			if(résultat) {
-				if(c==Color.WHITE) {
-					g.setColor(Color.black);
-					g.drawOval(this.x, y, 5, 5);
-				}
-				else {
-					g.setColor(c);
-					g.fillOval(this.x, y, 5, 5);
-				}}
+
+
+	public void paint(Graphics g,Color c,int x,int y,boolean résultat) {
+		if(résultat) {
+			if(c==Color.WHITE) {
+				g.setColor(Color.black);
+				g.drawOval(this.x, y, 5, 5);
+			}
 			else {
+				g.setColor(c);
+				g.fillOval(this.x, y, 5, 5);
+			}}
+		else {
 			if(c==Color.WHITE) {
 				g.setColor(Color.black);
 				g.drawOval(this.x, y, 25, 25);
@@ -94,11 +94,6 @@ public class VueProposition extends Canvas {
 				g.setColor(c);
 				g.fillOval(this.x, y, 26, 26);
 			}
-			}
-			
-	
-
-			
-		
-}
+		}
+	}
 }

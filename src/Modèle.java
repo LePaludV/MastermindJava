@@ -29,9 +29,11 @@ public class Modèle extends Observable {
 	
 	public void archiverProp(Rangée r) {
 		this.propositions[tentative] = r;
+		this.setChanged();
+		this.notifyObservers(r);
 	}
 	
-	public boolean évaluerProp() {
+	public void évaluerProp() {
 		Rangée rangéeCourante = this.propositions[this.tentative];
 		
 		for (int i=0;i<rangéeCourante.jetons.length;i++) {
@@ -45,8 +47,8 @@ public class Modèle extends Observable {
 				}
 			}
 		}
-		
+		System.out.println(rangéeCourante.résultat);
 		this.tentative++;
-		return rangéeCourante.résultat[1]==this.DIFFICULTE;
+		System.out.println(rangéeCourante.jetons);
 	}
 }

@@ -34,7 +34,7 @@ public class Vue extends Frame implements WindowListener,Observer{
 		this.setVisible(true);
 		this.addWindowListener(this);
 		
-		ctrl.addObserver(this);
+		this.mdl.addObserver(this);
 		
 	}
 
@@ -102,7 +102,6 @@ public class Vue extends Frame implements WindowListener,Observer{
 		System.out.println("yess");
 		
 		if(arg instanceof Rangée) {
-			
 			VP.NouvelProposition((Rangée)arg);
 		}
 
