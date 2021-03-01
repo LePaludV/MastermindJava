@@ -2,8 +2,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.util.Observable;
-import java.util.Observer;
+
 
 public class VueProposition extends Canvas {
 	Modèle mdl;
@@ -14,7 +13,7 @@ public class VueProposition extends Canvas {
 
 	public VueProposition(Modèle mdl){
 		this.mdl=mdl;
-
+		this.setBackground(Color.gray);
 		this.setPreferredSize(new Dimension(400,600));
 
 
@@ -24,76 +23,52 @@ public class VueProposition extends Canvas {
 			paint(getGraphics() , c, x, y,false);
 			this.x+=300/r.jetons.length;
 		}
-		this.y+=60;
-		this.x=10;
+		
 		int noir=r.résultat[1];
 		int blanc=r.résultat[0];
-		System.out.println("noir : "+noir);
-		System.out.println("blanc : "+blanc);
 		if(noir!=0) {
-			System.out.println("noir1");
 			paint(getGraphics() , Color.black,325, y,true);
 			noir-=1;}
 		else if(blanc!=0) {
 			paint(getGraphics() , Color.WHITE,325, y,true);
 			blanc-=1;}
-		else {
-			System.out.println("rien");
-		}
 
 		if(noir!=0) {
-			System.out.println("noir2");
 			paint(getGraphics() , Color.black,350, y,true);
 			noir-=1;}
 		else if(blanc!=0) {
 			paint(getGraphics() , Color.WHITE,350, y,true);
 			blanc-=1;}
-		else {
-			System.out.println("rien");
-		}
+
 		if(noir!=0) {
-			System.out.println("noir3");
 			paint(getGraphics() , Color.black,325, y+25,true);
 			noir-=1;}
 		else if(blanc!=0) {
 			paint(getGraphics() , Color.WHITE,325, y+25,true);
 			blanc-=1;}
-		else {
-			System.out.println("rien");
-		}
+
 		if(noir!=0) {
-			System.out.println("noir4");
 			paint(getGraphics() , Color.black,350, y+25,true);
 			noir-=1;}
 		else if(blanc!=0) {
 			paint(getGraphics() , Color.WHITE,350, y+25,true);
 			blanc-=1;}
-		else {
-			System.out.println("rien");
-		}
 
+
+		this.y+=60;
+		this.x=10;
 	}
 
 
 	public void paint(Graphics g,Color c,int x,int y,boolean résultat) {
 		if(résultat) {
-			if(c==Color.WHITE) {
-				g.setColor(Color.black);
-				g.drawOval(this.x, y, 5, 5);
-			}
-			else {
 				g.setColor(c);
-				g.fillOval(this.x, y, 5, 5);
-			}}
-		else {
-			if(c==Color.WHITE) {
-				g.setColor(Color.black);
-				g.drawOval(this.x, y, 25, 25);
+				g.fillOval(x, y, 15, 15);
 			}
-			else {
+		else {
 				g.setColor(c);
 				g.fillOval(this.x, y, 26, 26);
 			}
-		}
+		
 	}
 }

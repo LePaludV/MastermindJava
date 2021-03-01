@@ -19,6 +19,7 @@ public class Vue extends Frame implements WindowListener,Observer{
 	Frame Jeu = new Frame();
 
 	VueProposition VP=new VueProposition(mdl);
+	VueClavier VC;
 	public Vue (Modèle mdl, Contrôleur ctrl){
 		this.mdl=mdl;
 		
@@ -99,9 +100,18 @@ public class Vue extends Frame implements WindowListener,Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
-		System.out.println("yess");
-		
 		if(arg instanceof Rangée) {
+			Rangée prop=(Rangée) arg;
+			if(prop.résultat[1]==4) {
+				System.out.println("Gagné !");
+				VC.partieGagné();
+			}
+			if(mdl.tentative==mdl.N_TENTATIVES && prop.résultat[1]!=4) {
+				System.out.println(prop.indiceJeton);
+				System.out.println(mdl.DIFFICULTE);
+				System.out.println("Perdu");
+				VC.partiePerdue();
+			}
 			VP.NouvelProposition((Rangée)arg);
 		}
 
