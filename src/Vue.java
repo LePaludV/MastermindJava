@@ -15,11 +15,10 @@ import java.util.Observer;
 
 public class Vue extends Frame implements WindowListener,Observer{
 	Modèle mdl;
-	
 	Frame Jeu = new Frame();
 
 	VueProposition VP=new VueProposition(mdl);
-	VueClavier VC;
+	
 	public Vue (Modèle mdl, Contrôleur ctrl){
 		this.mdl=mdl;
 		
@@ -104,13 +103,13 @@ public class Vue extends Frame implements WindowListener,Observer{
 			Rangée prop=(Rangée) arg;
 			if(prop.résultat[1]==4) {
 				System.out.println("Gagné !");
-				VC.partieGagné();
+				//VC.partieGagné();
 			}
 			if(mdl.tentative==mdl.N_TENTATIVES && prop.résultat[1]!=4) {
 				System.out.println(prop.indiceJeton);
 				System.out.println(mdl.DIFFICULTE);
 				System.out.println("Perdu");
-				VC.partiePerdue();
+				//VC.partiePerdue();
 			}
 			VP.NouvelProposition((Rangée)arg);
 		}
